@@ -6,7 +6,7 @@ global:
 #   imageRegistry: myRegistryName
 #   imagePullSecrets:
 #     - myRegistryKeySecretName
-#   storageClass: myStorageClass
+  storageClass: sc-portworx-rep-3
   redis: {}
 
 ## Bitnami Redis image version
@@ -134,12 +134,12 @@ sentinel:
 
 ## Specifies the Kubernetes Cluster's Domain Name.
 ##
-clusterDomain: cluster.local
+clusterDomain: tlvkubedev.tlv.lpnet.com
 
 networkPolicy:
   ## Specifies whether a NetworkPolicy should be created
   ##
-  enabled: true
+  enabled: false
 
   ## The Policy model to apply. When set to false, only pods with the correct
   ## client label will have network access to the port Redis is listening
@@ -263,7 +263,7 @@ master:
   ## Use an alternate scheduler, e.g. "stork".
   ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
   ##
-  # schedulerName:
+  schedulerName: stork
 
   ## Configure extra options for Redis Master liveness and readiness probes
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)
@@ -424,7 +424,7 @@ slave:
   ## Use an alternate scheduler, e.g. "stork".
   ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
   ##
-  # schedulerName:
+  schedulerName: stork
 
   ## Redis slave pod Annotation and Labels
   podLabels: {}
